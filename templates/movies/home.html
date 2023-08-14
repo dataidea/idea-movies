@@ -1,0 +1,24 @@
+{% extends 'base.html' %} {% block content %}
+<div>
+  <main>
+    {% if trending %}
+    <ul>
+      {% for trend in trending %}
+      <li>
+        <a href="/{{trend.id}}">
+          <img src="{{trend.image.url}}" alt="{{trend.image.url}}" />
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+  </main>
+  <aside>
+    <ul>
+      {% for movie in movies %}
+      <li><a href="/{{movie.id}}">{{movie.title}}</a></li>
+      {% endfor %}
+    </ul>
+  </aside>
+</div>
+{% endblock %}
