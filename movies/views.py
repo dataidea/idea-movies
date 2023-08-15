@@ -13,11 +13,29 @@ def home(request):
     template_name = 'movies/home.html'
     return render(request=request, template_name=template_name, context=context)
 
-def detail(request, movie_id):
-    return render(request, 'movies/detail.html')
+def detail(request, id):
+    movies = Movie.objects.all()
+    movie = Movie.objects.get(id=id)
+    context = {
+        'movie': movie,
+        'movies': movies,
+    }
+    template_name = 'movies/detail.html'
+    return render(request=request, template_name=template_name, context=context)
 
 def movies(request):
     return render(request, 'movies/movies.html')
+
+def browse(request):
+    trends = Movie.objects.filter(trending=True)
+    movies = Movie.objects.all()
+    context = {
+        'trends': trends,
+        'movies': movies
+    }
+    template_name = 'movies/browse.html'
+    return render(request=request, template_name=template_name, context=context)
+
 
 def search(request):
     query = request.GET.get('q')

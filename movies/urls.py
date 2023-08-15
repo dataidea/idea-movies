@@ -5,7 +5,8 @@ from django.urls import include
 app_name = 'movies'
 
 urlpatterns = [
-    path('', views.home, name='home'),
-    path('<int:movie_id>/', views.detail, name='detail'),
+    path(route='', view=views.home, name='home'),
+    path(route='browse', view=views.browse, name='browse'),
+    path(route='<int:id>/', view=views.detail, name='detail'),
 
 ]

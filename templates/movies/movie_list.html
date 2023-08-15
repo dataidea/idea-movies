@@ -1,0 +1,21 @@
+<!-- Start Of Movie List -->
+{% if movies %} {% for movie in movies %}
+<a href="{% url 'movies:detail' movie.id %}" class="col-lg-6">
+  <div class="item">
+    <img src="{{movie.image.url}}" alt="" class="templatemo-item" />
+    <h4>{{movie.title}}</h4>
+    <!-- Display Genres -->
+    {% for genre in movie.genre.all %}
+    <!-- Name of Genre -->
+    <span>{{ genre.name }}</span>
+    <!-- End Of Genres -->
+    {% endfor %}
+    <ul>
+      <li><i class="fa fa-star"></i> {{movie.stars}}</li>
+      <!-- <li><i class="fa fa-download"></i> 2.3M</li> -->
+    </ul>
+  </div>
+</a>
+{% endfor %}
+<!-- End Of Movie List -->
+{% endif %}

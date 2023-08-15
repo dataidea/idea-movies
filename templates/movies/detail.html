@@ -1,19 +1,68 @@
 {% extends 'base.html' %} {% block content %}
-<h1>title</h1>
-<video
-  id="vuem"
-  style="display: block"
-  src="https://go.wootly.ch/dash?source=web&amp;id=&amp;sig=BB3JUutiS4_deTlsnNBtrA&amp;expire=1692016533&amp;ofs=11&amp;usr=178811"
-  controls=""
-  autoplay=""
-  draggable="true"
-></video>
-<h1>{{movie.title}}</h1>
-<p>movie info</p>
-<p>description</p>
-<p>Director</p>
-<p>Cast</p>
+
+<!-- ***** Featured Start ***** -->
+<div class="row">
+  <div class="col-lg-12">
+    <div class="feature-banner header-text">
+      <div class="row">
+        <video
+          id="mrpo"
+          class="border border-dark rounded-lg"
+          style="display: block; background-image: none"
+          src="https://go.wootly.ch/dash?source=web&amp;id={{movie.movie_id}}&amp;sig=RXqSJmzUxp9uYDm9xmC8VA&amp;ofs=11&amp;usr=178811"
+          controls=""
+          autoplay=""
+          __idm_id__="4661249"
+        ></video>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ***** Featured End ***** -->
+
+<!-- ***** Details Start ***** -->
+<div class="game-details">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="content">
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="left-info">
+              <div class="left">
+                <h4>{{movie.title}}</h4>
+                <!-- Display Genres -->
+                {% for genre in movie.genre.all %}
+                <!-- Name of Genre -->
+                <span>{{ genre.name }}</span>
+                <!-- End Of Genres -->
+                {% endfor %}
+              </div>
+              <ul>
+                <li><i class="fa fa-star"></i> {{movie.stars}}</li>
+                <!-- <li><i class="fa fa-download"></i> 2.3M</li> -->
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-12">
+            <p>{{movie.description}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ***** Details End ***** -->
+
+<!-- ***** Other Start ***** -->
+<div class="other-games">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="heading-section">
+        <h4><em>Other Related</em> Movies</h4>
+      </div>
+    </div>
+    {% include 'movies/movie_list.html' with movies=movies%}
+  </div>
+</div>
+<!-- ***** Other End ***** -->
 {% endblock %}
-
-
-
