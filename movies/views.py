@@ -38,12 +38,12 @@ def browse(request):
 
 
 def search(request):
-    query = request.GET.get('q')
+    query = request.GET.get('query')
+    context = {'query':query}
     if query:
-        movies = Movie.objects.filter(Q(title__icontains=query) | Q(overview__icontains=query))
+        sought_movies = Movie.objects.filter(Q(title__icontains=query))
+        context['sought_movies'] = sought_movies
     else:
         movies = Movie.objects.all()
-    context = {
-        'movies': movies
-    }
+        context['movies'] = movies    
     return render(request, 'movies/search.html', context)
