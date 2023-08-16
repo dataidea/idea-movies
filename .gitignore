@@ -1,4 +1,5 @@
 db.sqlite3
 movies/__pycache__
+ideamovies/__pycache__
 movies/migrations
 cyborg-1.0.0
