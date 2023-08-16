@@ -1,4 +1,6 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %}
+<!-- Display Page Content -->
+{% block content %}
 
 <!-- ***** Sought Games Start ***** -->
 <div class="row">
@@ -13,7 +15,8 @@
       <!-- Otherwise -->
       {% else %}
       <h4>
-        No movies found matching <span style="color: #d63384; font-style: italic;">{{query}}</span>
+        No movies found matching
+        <span style="color: #d63384; font-style: italic">{{query}}</span>
       </h4>
       {% endif %}
     </div>
